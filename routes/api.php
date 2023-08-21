@@ -19,8 +19,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('getDatosToken', [AuthController::class, 'getDatosToken']);
     Route::post('validarToken', [AuthController::class, 'validarToken']);
     Route::post('logout', [AuthController::class, 'logout']);
+    // Route::post('register', [AuthController::class, 'register']);
 });
-
-Route::post('validarToken', [AuthController::class, 'validarToken']);
 Route::post('login', [AuthController::class, 'login']);
-Route::post('register', [AuthController::class, 'register']);

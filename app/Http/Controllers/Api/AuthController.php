@@ -74,12 +74,6 @@ class AuthController extends Controller
         if (Auth::guard('sanctum')->user()) {
             //eliminar el token actual
             $request->user()->currentAccessToken()->delete();
-
-            //crear nuevo token
-            $token = $request->user()->createToken('auth_token')->plainTextToken;
-            return response()->json([
-                'access_token' => $token,
-            ]);
         }
     }
 }
