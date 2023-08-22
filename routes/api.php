@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\RegisterController;
+use App\Http\Controllers\RolesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,5 +22,15 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('validarToken', [AuthController::class, 'validarToken']);
     Route::post('logout', [AuthController::class, 'logout']);
     // Route::post('register', [AuthController::class, 'register']);
+    Route::post('roles', [RolesController::class, 'index']);
+    Route::post('roles/create', [RolesController::class, 'store']);
+    Route::post('roles/update/{id}', [RolesController::class, 'update']);
+    Route::post('roles/delete/{id}', [RolesController::class, 'destroy']);
+    Route::post('roles/asignar/{rol}/user/{user}', [RolesController::class, 'asignar']);
+
+    Route::post('create', [RegisterController::class, 'store']);
+    Route::post('update', [RegisterController::class, 'update']);
+    Route::post('delete', [RegisterController::class, 'delete']);
+
+    Route::post('login', [AuthController::class, 'login']);
 });
-Route::post('login', [AuthController::class, 'login']);
